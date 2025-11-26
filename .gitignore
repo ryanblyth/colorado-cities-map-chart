@@ -16,6 +16,9 @@ public/tiles/*.pmtiles
 *.mbtiles
 *.osm.pbf
 
+# npm packages
+node_modules/
+
 # common heavy extras
 *.zip
 *.sqlite
