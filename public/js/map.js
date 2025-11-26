@@ -77,6 +77,18 @@ function initializeMap() {
 }
 
 function setupMapEventHandlers() {
+  // Log zoom level changes
+  map.on('zoom', () => {
+    const zoom = map.getZoom();
+    console.log(`Zoom level: ${zoom.toFixed(2)}`);
+  });
+  
+  // Log initial zoom level
+  map.on('load', () => {
+    const initialZoom = map.getZoom();
+    console.log(`Initial zoom level: ${initialZoom.toFixed(2)}`);
+  });
+  
   // Add city layers when the map loads
   map.on('load', async () => {
     try {
@@ -384,6 +396,12 @@ waitForPMTiles().then(() => {
     center: [-105.5, 39.1],
     zoom: 6
   });
+
+    map.on('style.load', () => {
+      map.setProjection({
+        type: 'globe'
+      });
+    });
 
   // Initialize map after it's created
   initializeMap();
